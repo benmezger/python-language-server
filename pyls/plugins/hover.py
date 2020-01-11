@@ -36,10 +36,10 @@ def pyls_hover(document, position):
         if not contents:
             return {'contents': ''}
         return {'contents': contents}
-    else:
-        # Find an exact match for a completion
-        for d in definitions:
-            if d.name == word:
-                return {'contents': _utils.format_docstring(d.docstring()) or ''}
 
-        return {'contents': ''}
+    # Find an exact match for a completion
+    for d in definitions:
+        if d.name == word:
+            return {'contents': _utils.format_docstring(d.docstring()) or ''}
+
+    return {'contents': ''}
