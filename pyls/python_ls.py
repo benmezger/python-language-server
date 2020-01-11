@@ -136,7 +136,6 @@ class PythonLanguageServer(MethodDispatcher):
 
     def m_shutdown(self, **_kwargs):
         self._shutdown = True
-        return None
 
     def m_exit(self, **_kwargs):
         self._endpoint.shutdown()
