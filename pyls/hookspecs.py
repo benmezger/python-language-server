@@ -1,20 +1,24 @@
 # Copyright 2017 Palantir Technologies, Inc.
 # pylint: disable=redefined-builtin, unused-argument
 from pyls import hookspec
+from typing import List
+
+from pyls.config import Config
+from pyls.workspace import Workspace, Document
 
 
 @hookspec
-def pyls_code_actions(config, workspace, document, range, context):
+def pyls_code_actions(config: Config, workspace: Workspace, document: Document, range: dict, context: dict):
     pass
 
 
 @hookspec
-def pyls_code_lens(config, workspace, document):
+def pyls_code_lens(config: Config, workspace: Workspace, document: Document):
     pass
 
 
 @hookspec
-def pyls_commands(config, workspace):
+def pyls_commands(config: Config, workspace: Workspace) -> List[str]:
     """The list of command strings supported by the server.
 
     Returns:
@@ -23,72 +27,72 @@ def pyls_commands(config, workspace):
 
 
 @hookspec
-def pyls_completions(config, workspace, document, position):
+def pyls_completions(config: Config, workspace: Workspace, document: Document, position: dict):
     pass
 
 
 @hookspec
-def pyls_definitions(config, workspace, document, position):
+def pyls_definitions(config: Config, workspace: Workspace, document: Document, position: dict):
     pass
 
 
 @hookspec
-def pyls_dispatchers(config, workspace):
+def pyls_dispatchers(config: Config, workspace: Workspace):
     pass
 
 
 @hookspec
-def pyls_document_did_open(config, workspace, document):
+def pyls_document_did_open(config: Config, workspace: Workspace, document: Document):
     pass
 
 
 @hookspec
-def pyls_document_did_save(config, workspace, document):
+def pyls_document_did_save(config: Config, workspace: Workspace, document: Document):
     pass
 
 
 @hookspec
-def pyls_document_highlight(config, workspace, document, position):
+def pyls_document_highlight(config: Config, workspace: Workspace, document: Document, position: dict):
     pass
 
 
 @hookspec
-def pyls_document_symbols(config, workspace, document):
+def pyls_document_symbols(config: Config, workspace: Workspace, document: Document):
     pass
 
 
 @hookspec(firstresult=True)
-def pyls_execute_command(config, workspace, command, arguments):
+def pyls_execute_command(config: Config, workspace: Workspace, command: str, arguments: list):
     pass
 
 
 @hookspec
-def pyls_experimental_capabilities(config, workspace):
+def pyls_experimental_capabilities(config: Config, workspace: Workspace):
     pass
 
 
 @hookspec(firstresult=True)
-def pyls_folding_range(config, workspace, document):
+def pyls_folding_range(config: Config, workspace: Workspace, document: Document):
     pass
 
 
 @hookspec(firstresult=True)
-def pyls_format_document(config, workspace, document):
+def pyls_format_document(config: Config, workspace: Workspace, document: Document):
     pass
 
 
 @hookspec(firstresult=True)
-def pyls_format_range(config, workspace, document, range):
+def pyls_format_range(config: Config, workspace: Workspace, document: Document, range: dict):
     pass
 
 
 @hookspec(firstresult=True)
-def pyls_hover(config, workspace, document, position):
+def pyls_hover(config: Config, workspace: Workspace, document: Document, position: dict):
     pass
 
 
 @hookspec
-def pyls_initialize(config, workspace):
+def pyls_initialize(config: Config, workspace: Workspace):
     pass
 
 
@@ -98,25 +102,26 @@ def pyls_initialized():
 
 
 @hookspec
-def pyls_lint(config, workspace, document, is_saved):
+def pyls_lint(config: Config, workspace: Workspace, document: Document, is_saved: bool):
     pass
 
 
 @hookspec
-def pyls_references(config, workspace, document, position, exclude_declaration):
+def pyls_references(config: Config, workspace: Workspace, document: Document, position: dict,
+                    exclude_declaration: dict):
     pass
 
 
 @hookspec(firstresult=True)
-def pyls_rename(config, workspace, document, position, new_name):
+def pyls_rename(config: Config, workspace: Workspace, document: Document, position: dict, new_name: str):
     pass
 
 
 @hookspec
-def pyls_settings(config):
+def pyls_settings(config: Config):
     pass
 
 
 @hookspec(firstresult=True)
-def pyls_signature_help(config, workspace, document, position):
+def pyls_signature_help(config: Config, workspace: Workspace, document: Document, position: dict):
     pass
